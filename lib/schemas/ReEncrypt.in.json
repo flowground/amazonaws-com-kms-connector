@@ -1,0 +1,107 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "CiphertextBlob": "<binary data>",
+                "DestinationKeyId": "0987dcba-09fe-87dc-65ba-ab0987654321"
+            },
+            "properties": {
+                "CiphertextBlob": {
+                    "description": "Ciphertext of the data to reencrypt.",
+                    "maxLength": 6144,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "DestinationEncryptionContext": {
+                    "description": "Encryption context to use when the data is reencrypted.",
+                    "items": {
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "DestinationKeyId": {
+                    "description": "<p>A unique identifier for the CMK that is used to reencrypt the data.</p> <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with \"alias/\". To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p> <p>For example:</p> <ul> <li> <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code> </p> </li> <li> <p>Alias name: <code>alias/ExampleAlias</code> </p> </li> <li> <p>Alias ARN: <code>arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias</code> </p> </li> </ul> <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>. To get the alias name and alias ARN, use <a>ListAliases</a>.</p>",
+                    "maxLength": 2048,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "GrantTokens": {
+                    "description": "<p>A list of grant tokens.</p> <p>For more information, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token\">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>",
+                    "items": {
+                        "maxLength": 8192,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "maxItems": 10,
+                    "minItems": 0,
+                    "type": "array"
+                },
+                "SourceEncryptionContext": {
+                    "description": "Encryption context used to encrypt and decrypt the data specified in the <code>CiphertextBlob</code> parameter.",
+                    "items": {
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "CiphertextBlob",
+                "DestinationKeyId"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

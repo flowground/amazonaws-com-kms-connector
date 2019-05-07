@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": {
+                "CiphertextBlob": "<binary data>"
+            },
+            "properties": {
+                "CiphertextBlob": {
+                    "description": "Ciphertext to be decrypted. The blob includes metadata.",
+                    "maxLength": 6144,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "EncryptionContext": {
+                    "description": "The encryption context. If this was specified in the <a>Encrypt</a> function, it must be specified here or the decryption operation will fail. For more information, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html\">Encryption Context</a>.",
+                    "items": {
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "GrantTokens": {
+                    "description": "<p>A list of grant tokens.</p> <p>For more information, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token\">Grant Tokens</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>",
+                    "items": {
+                        "maxLength": 8192,
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "maxItems": 10,
+                    "minItems": 0,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "CiphertextBlob"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
